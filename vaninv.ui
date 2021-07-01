@@ -10,8 +10,20 @@
     <height>801</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1046</width>
+    <height>801</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1046</width>
+    <height>801</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Vancouver Glass</string>
+   <string>Invoice to PDF</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
@@ -122,7 +134,7 @@ color: #5e5e48
    <property name="geometry">
     <rect>
      <x>900</x>
-     <y>720</y>
+     <y>710</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -142,98 +154,13 @@ background-color: rgb(170, 0, 0);
     <string>Create PDF</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QFrame{
-background-color: rgb(255, 255, 255);
-
-}</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>0</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-font: 10pt &quot;Segoe UI Semilight&quot;;
-color: #5e5e48
-
-}</string>
-    </property>
-    <property name="text">
-     <string>Invoice to PDF</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="minbtn_2">
-    <property name="geometry">
-     <rect>
-      <x>1000</x>
-      <y>10</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-background-color: rgb(170, 0, 0);
-	color: rgb(255, 255, 255);
-	
-	font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-border-radius: 15px;
-}</string>
-    </property>
-    <property name="text">
-     <string>x</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="minbtn">
-    <property name="geometry">
-     <rect>
-      <x>950</x>
-      <y>10</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-background-color: rgb(149, 149, 149);
-	color: rgb(255, 255, 255);
-	font: 63 10pt &quot;Segoe UI Semibold&quot;;
-border-radius: 30px;
-}</string>
-    </property>
-    <property name="text">
-     <string>-</string>
-    </property>
-   </widget>
-  </widget>
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
      <x>-60</x>
-     <y>20</y>
+     <y>-20</y>
      <width>291</width>
-     <height>801</height>
+     <height>841</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -450,6 +377,29 @@ border-radius: 100px;
     <string>ex. 345678</string>
    </property>
   </widget>
+  <widget class="QLabel" name="time_label">
+   <property name="geometry">
+    <rect>
+     <x>-6</x>
+     <y>780</y>
+     <width>1051</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color: rgb(167, 167, 167);
+	background-color: rgb(245, 245, 245);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <zorder>time_label</zorder>
   <zorder>frame_5</zorder>
   <zorder>frame_4</zorder>
   <zorder>frame_2</zorder>
@@ -458,7 +408,6 @@ border-radius: 100px;
   <zorder>selectbtn</zorder>
   <zorder>label</zorder>
   <zorder>pdfbtn</zorder>
-  <zorder>frame</zorder>
   <zorder>lineEdit</zorder>
  </widget>
  <resources/>

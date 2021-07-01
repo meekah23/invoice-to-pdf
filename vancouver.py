@@ -1,6 +1,7 @@
 import sys
 import pandas as pd
 import sqlite3
+import time
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from reportlab.lib import colors
@@ -33,12 +34,10 @@ class VanInvoice(QWidget):
         df.to_sql(name='OHEAD', con=conn, if_exists='append', index=False)
         cur.execute("SELECT OINO FROM OHEAD")
         inv = cur.fetchall()
-        #final = pd.DataFrame(inv)
-
-        #list1 = [list(row) for row in inv]
-        #print(list)
-        #completer = QCompleter(list)
-        #self.lineEdit.setCompleter(completer)
+        list1 = [', '.join(map(str, x)) for x in inv]
+        print(list1)
+        completer = QCompleter(list1)
+        self.lineEdit.setCompleter(completer)
 
 
 
@@ -46,6 +45,7 @@ class VanInvoice(QWidget):
 
     def getData(self):
         try:
+            start_time = time.time()
             global invdate, salesman,addedby, invnum, qoutenum, shipping,get,total
             conn = sqlite3.connect(':memory:')
             cur = conn.cursor()
@@ -98,15 +98,17 @@ class VanInvoice(QWidget):
             get = cur.fetchall()
             total = get[0][0] + get[0][1]
 
-
-
+            end_time = time.time()
+            execution_time = end_time - start_time
+            self.time_label.setText("Data fetched for " + str(execution_time) + " secs")
             QMessageBox.information(self, "Done!", "Data fetched.")
+
         except Exception as e:
                 print(e)
                 QMessageBox.information(self, "Invalid Input", "No invoice number matched.")
 
     def toPDF(self):
-
+        start_time = time.time()
         filename, _ = QFileDialog.getSaveFileName(self, 'Save file', '', 'PDF File (*.pdf)')
         if filename != '':
             try:
@@ -282,6 +284,9 @@ class VanInvoice(QWidget):
                 Elements.append(table3)
                 doc.build(Elements)
 
+                end_time = time.time()
+                execution_time = end_time - start_time
+                self.time_label.setText("PDF created for " + str(execution_time) + " secs")
                 QMessageBox.information(self, "Done!", "File Exported.")
 
             except Exception as e:
